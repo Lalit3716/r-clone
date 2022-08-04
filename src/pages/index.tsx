@@ -1,11 +1,18 @@
 import { GetServerSideProps } from "next";
 import { unstable_getServerSession } from "next-auth";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { trpc } from "utils/trpc";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 interface IProps {}
 
 const Home: React.FC<IProps> = () => {
+  const { data } = trpc.useQuery([
+    "hello",
+    {
+      text: "world",
+    },
+  ]);
   const { data: session } = useSession();
 
   if (!session) {
