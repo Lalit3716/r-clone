@@ -8,7 +8,7 @@ interface IProps {}
 
 const Home: React.FC<IProps> = () => {
   const { data } = trpc.useQuery([
-    "hello",
+    "api.hello",
     {
       text: "world",
     },
