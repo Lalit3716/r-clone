@@ -8,5 +8,8 @@ export type AppRouter = typeof appRouter;
 // export API handler
 export default trpcNext.createNextApiHandler({
   router: appRouter,
-  createContext: () => null,
+  createContext: ({ req, res }) => ({
+    req,
+    res,
+  }),
 });
