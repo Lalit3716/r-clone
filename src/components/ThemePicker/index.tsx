@@ -1,5 +1,5 @@
-import { Menu, Popover, Transition } from "@headlessui/react";
 import React, { Fragment, useState } from "react";
+import { Menu, Transition } from "@headlessui/react";
 import { Themes } from "themes";
 
 interface IProps {
@@ -10,8 +10,9 @@ interface IProps {
 
 const ThemePicker: React.FC<IProps> = ({ theme, setTheme, className }) => {
   const [originalTheme, setOriginalTheme] = useState(theme);
+
   return (
-    <Menu>
+    <Menu as="menu">
       <Menu.Button
         className={
           "whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-inverse-nav bg-indigo-600 hover:bg-indigo-700 " +
