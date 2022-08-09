@@ -12,12 +12,12 @@ const MyApp = ({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) => {
-  const [theme, setTheme] = useState(Themes.dark);
+  const [theme, setTheme] = useState<string>(Themes.Dark);
 
   return (
     <SessionProvider session={session}>
       <div className={`theme-${theme} bg-primary h-screen`}>
-        <Navbar />
+        <Navbar theme={theme} setTheme={(theme) => setTheme(theme)} />
         <Component {...pageProps} />
       </div>
     </SessionProvider>

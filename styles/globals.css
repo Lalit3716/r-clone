@@ -5,9 +5,34 @@
 .theme-dark {
   --color-bg-primary: #1e1e1e;
   --color-text-primary: #fff;
+  --bg-primary-nav: #fafafa;
+  --color-text-primary-nav: #000;
+  --color-text-inverse-nav: #fff;
 }
 
 .theme-light {
   --color-bg-primary: #fff;
   --color-text-primary: #1e1e1e;
+  --bg-primary-nav: #fafafa;
+  --color-text-primary-nav: #000;
+  --color-text-primary-nav: #000;
+  --color-text-inverse-nav: #fff;
+}
+
+.theme-neon {
+  --color-bg-primary: #3e0f6f;
+  --color-text-primary: #e2e2dc;
+  --bg-primary-nav: #fafafa;
+  --color-text-primary-nav: #000;
+  --color-text-primary-nav: #000;
+  --color-text-inverse-nav: #fff;
+}
+
+.theme-yellow {
+  --color-bg-primary: #d0e62f;
+  --color-text-primary: #1b1b1b;
+  --bg-primary-nav: #fafafa;
+  --color-text-primary-nav: #000;
+  --color-text-primary-nav: #000;
+  --color-text-inverse-nav: #fff;
 }
