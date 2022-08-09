@@ -7,6 +7,7 @@ import "../../styles/globals.css";
 import { useState } from "react";
 import { Themes } from "themes";
 import Navbar from "components/Navbar";
+import Footer from "components/Footer";
 
 const MyApp = ({
   Component,
@@ -16,9 +17,10 @@ const MyApp = ({
 
   return (
     <SessionProvider session={session}>
-      <div className={`theme-${theme} bg-primary h-screen`}>
+      <div className={`theme-${theme} bg-primary flex flex-col min-h-screen`}>
         <Navbar theme={theme} setTheme={(theme) => setTheme(theme)} />
         <Component {...pageProps} />
+        <Footer />
       </div>
     </SessionProvider>
   );
