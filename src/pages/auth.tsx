@@ -8,19 +8,20 @@ interface IProps {
 
 export default function SignIn({ providers }: IProps) {
   if (!providers) {
-    return <div>Loading...</div>;
+    return <div className="text-primary">Loading...</div>;
   }
 
   return (
     <>
       {Object.values(providers).map((provider) => (
-        <div key={provider.name}>
+        <div key={provider.name} className="text-primary">
           <button
             onClick={() =>
               signIn(provider.id, {
                 callbackUrl: "/",
               })
             }
+            className="text-primary"
           >
             Sign in with {provider.name}
           </button>

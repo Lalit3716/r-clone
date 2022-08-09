@@ -17,7 +17,7 @@ const Home: React.FC<IProps> = () => {
 
   if (!session) {
     return (
-      <div className="text-emerald-600">
+      <div className="text-primary">
         <div>You are not signed in!</div>
         <button onClick={() => signIn()}>Sign in</button>
       </div>
@@ -25,7 +25,7 @@ const Home: React.FC<IProps> = () => {
   }
 
   return (
-    <div className="text-emerald-600">
+    <div className="text-primary">
       <div>You are signed in as {session.user?.name}</div>
       <button onClick={() => signOut()}>Sign out</button>
     </div>

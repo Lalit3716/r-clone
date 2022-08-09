@@ -4,14 +4,22 @@ import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 
 import "../../styles/globals.css";
+import { useState } from "react";
+import { Themes } from "themes";
+import Navbar from "components/Navbar";
 
 const MyApp = ({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) => {
+  const [theme, setTheme] = useState(Themes.dark);
+
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <div className={`theme-${theme} bg-primary h-screen`}>
+        <Navbar />
+        <Component {...pageProps} />
+      </div>
     </SessionProvider>
   );
 };

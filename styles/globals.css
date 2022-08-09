@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: black;
+.theme-dark {
+  --color-bg-primary: #1e1e1e;
+  --color-text-primary: #fff;
+}
+
+.theme-light {
+  --color-bg-primary: #fff;
+  --color-text-primary: #1e1e1e;
 }
