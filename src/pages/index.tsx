@@ -1,45 +1,39 @@
-import { GetServerSideProps } from "next";
-import { unstable_getServerSession } from "next-auth";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { trpc } from "utils/trpc";
-import { authOptions } from "pages/api/auth/[...nextauth]";
-
+import Link from "next/link";
+import react from "react";
 interface IProps {}
 
 const Home: React.FC<IProps> = () => {
-  const { data } = trpc.useQuery([
-    "api.hello",
-    {
-      text: "world",
-    },
-  ]);
-  const { data: session } = useSession();
-
-  if (!session) {
-    return (
-      <div className="text-primary">
-        <div>You are not signed in!</div>
-        <button onClick={() => signIn()}>Sign in</button>
-      </div>
-    );
-  }
-
   return (
-    <div className="text-primary">
-      <div>You are signed in as {session.user?.name}</div>
-      <button onClick={() => signOut()}>Sign out</button>
-    </div>
+    <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+      <div className="sm:text-center lg:text-left">
+        <h1 className="text-4xl tracking-tight font-extrabold text-primary sm:text-5xl md:text-6xl">
+          <span className="block xl:inline">Work In Progress! </span>
+          <span className="block text-indigo-600 xl:inline">
+            Clone Like Pro
+          </span>
+        </h1>
+        <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+          This is a work in progress and it is a clone of reddit/quora like
+          applications but with little bit of my own creativity.
+        </p>
+        <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+          <div className="rounded-md shadow">
+            <div className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+              <Link href="/auth">Get started</Link>
+            </div>
+          </div>
+          <div className="mt-3 sm:mt-0 sm:ml-3">
+            <a
+              href="https://github.com/Lalit3716/r-clone"
+              className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
+            >
+              See the code on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const session = await unstable_getServerSession(req, res, authOptions);
-
-  return {
-    props: {
-      session,
-    },
-  };
 };
 
 export default Home;

@@ -31,28 +31,27 @@ const ThemePicker: React.FC<IProps> = ({ theme, setTheme, className }) => {
         leaveTo="opacity-0 scale-95"
       >
         <Menu.Items
-          className="absolute z-10 w-36 top-20"
+          className="absolute z-10 w-40 top-20"
           onMouseLeave={() => setTheme(originalTheme)}
         >
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-              {Object.entries(Themes).map((entry) => (
-                <>
-                  <Menu.Item>
-                    <div
-                      key={entry[0]}
-                      className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-100 cursor-pointer"
-                      onMouseEnter={() => setTheme(entry[1])}
-                      onClick={() => setOriginalTheme(entry[1])}
-                    >
-                      <div className="ml-4">
-                        <p className="text-base font-medium text-gray-900">
-                          {entry[0]}
-                        </p>
-                      </div>
+              {Object.entries(Themes).map(([key, value]) => (
+                <Menu.Item key={key}>
+                  <div
+                    className={`-m-3 p-3 flex items-start rounded-lg hover:bg-gray-100 cursor-pointer ${
+                      originalTheme === value ? "bg-gray-200" : ""
+                    }`}
+                    onMouseEnter={() => setTheme(value)}
+                    onClick={() => setOriginalTheme(value)}
+                  >
+                    <div className="ml-4">
+                      <p className="text-base font-medium text-gray-900">
+                        {key}
+                      </p>
                     </div>
-                  </Menu.Item>
-                </>
+                  </div>
+                </Menu.Item>
               ))}
             </div>
           </div>
