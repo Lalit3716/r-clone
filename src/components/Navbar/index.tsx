@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Themes } from "themes";
+import ThemePicker from "components/ThemePicker";
 
 interface IProps {
   theme: string;
@@ -11,8 +12,6 @@ interface IProps {
 }
 
 const Navbar: React.FC<IProps> = ({ theme, setTheme }) => {
-  const [originalTheme, setOriginalTheme] = useState(theme);
-
   return (
     <Popover className="relative bg-primary-nav text-primary-nav">
       <div className="max-w-10xl mx-auto px-4">
@@ -38,44 +37,7 @@ const Navbar: React.FC<IProps> = ({ theme, setTheme }) => {
             >
               Log In
             </a>
-            <Popover.Group>
-              <Popover.Button className="mx-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-inverse-nav bg-indigo-600 hover:bg-indigo-700">
-                Change Theme
-              </Popover.Button>
-              <Transition
-                as={Fragment}
-                enter="duration-200 ease-out"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="duration-100 ease-in"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Popover.Panel
-                  className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0"
-                  onMouseLeave={() => setTheme(originalTheme)}
-                >
-                  <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                    <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                      {Object.entries(Themes).map((entry) => (
-                        <p
-                          key={entry[0]}
-                          className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-100 cursor-pointer"
-                          onMouseEnter={() => setTheme(entry[1])}
-                          onClick={() => setOriginalTheme(entry[1])}
-                        >
-                          <div className="ml-4">
-                            <p className="text-base font-medium text-gray-900">
-                              {entry[0]}
-                            </p>
-                          </div>
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                </Popover.Panel>
-              </Transition>
-            </Popover.Group>
+            <ThemePicker theme={theme} setTheme={setTheme} className="mx-4" />
           </div>
         </div>
       </div>
@@ -112,6 +74,11 @@ const Navbar: React.FC<IProps> = ({ theme, setTheme }) => {
             </div>
 
             <div className="p-3">
+              <ThemePicker
+                theme={theme}
+                setTheme={setTheme}
+                className="w-full mb-2"
+              />
               <a
                 href="#"
                 className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
