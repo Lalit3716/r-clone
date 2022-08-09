@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { unstable_getServerSession } from "next-auth";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "utils/trpc";
-import { authOptions } from "./api/auth/[...nextauth]";
+import { authOptions } from "pages/api/auth/[...nextauth]";
 
 interface IProps {}
 
@@ -17,7 +17,7 @@ const Home: React.FC<IProps> = () => {
 
   if (!session) {
     return (
-      <div>
+      <div className="text-emerald-600">
         <div>You are not signed in!</div>
         <button onClick={() => signIn()}>Sign in</button>
       </div>
@@ -25,7 +25,7 @@ const Home: React.FC<IProps> = () => {
   }
 
   return (
-    <div>
+    <div className="text-emerald-600">
       <div>You are signed in as {session.user?.name}</div>
       <button onClick={() => signOut()}>Sign out</button>
     </div>
