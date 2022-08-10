@@ -4,6 +4,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import ThemePicker from "components/ThemePicker";
 import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 
 interface IProps {
@@ -32,15 +33,21 @@ const Navbar: React.FC<IProps> = ({ theme, setTheme }) => {
             </Popover.Button>
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <div className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-inverse-nav bg-indigo-600 hover:bg-indigo-700">
-              <Link
-                href="/auth"
-                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-inverse-nav bg-indigo-600 hover:bg-indigo-700"
-              >
-                Log In
-              </Link>
-            </div>
             <ThemePicker theme={theme} setTheme={setTheme} className="mx-4" />
+            <div className="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-inverse-nav bg-indigo-600 hover:bg-indigo-700">
+              {!session?.user ? (
+                <Link href="/auth">Log In</Link>
+              ) : (
+                <button onClick={() => signOut()}>Log Out</button>
+              )}
+            </div>
+            {session?.user && (
+              <img
+                src={session.user.image || ""}
+                alt={session.user.name || ""}
+                className="ml-5 h-12 w-12 rounded-full"
+              />
+            )}
           </div>
         </div>
       </div>
