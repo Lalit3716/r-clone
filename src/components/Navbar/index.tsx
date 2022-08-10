@@ -17,7 +17,7 @@ const Navbar: React.FC<IProps> = ({ theme, setTheme }) => {
   return (
     <Popover className="relative bg-primary-nav text-primary-nav">
       <div className="max-w-10xl mx-auto px-4">
-        <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <div className="cursor-pointer">
               <Link href="/">
@@ -30,9 +30,6 @@ const Navbar: React.FC<IProps> = ({ theme, setTheme }) => {
               <span className="sr-only">Open menu</span>
               <MenuIcon className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>
-          </div>
-          <div className="hidden md:flex text-xl">
-            Welcome to RClone, an open source Reddit Clone!
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <div className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-inverse-nav bg-indigo-600 hover:bg-indigo-700">
@@ -65,7 +62,7 @@ const Navbar: React.FC<IProps> = ({ theme, setTheme }) => {
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-2xl font-bold">RClone</p>
+                  <p className="text-2xl font-bold text-black">RClone</p>
                   <p className="text-gray-500 text-md">
                     Welocme to RClone, a open source Reddit Clone!
                   </p>
