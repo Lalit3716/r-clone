@@ -1,23 +1,27 @@
-import { withTRPC } from "@trpc/next";
-import { AppRouter } from "pages/api/trpc/[trpc]";
-import type { AppProps } from "next/app";
-import { SessionProvider } from "next-auth/react";
-
-import "../../styles/globals.css";
 import { useState } from "react";
+import type { AppProps } from "next/app";
+import { withTRPC } from "@trpc/next";
+import { SessionProvider } from "next-auth/react";
+import { ToastContainer } from "react-toastify";
+import { AppRouter } from "pages/api/trpc/[trpc]";
+import "react-toastify/dist/ReactToastify.css";
+import "../../styles/globals.css";
+
 import { Themes } from "themes";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
+import useLocalStorage from "hooks/useLocalStorage";
 
 const MyApp = ({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) => {
-  const [theme, setTheme] = useState<string>(Themes.Dark);
+  const [theme, setTheme] = useLocalStorage<string>("theme", Themes.Dark);
 
   return (
     <SessionProvider session={session}>
       <div className={`theme-${theme} bg-primary flex flex-col min-h-screen`}>
+        <ToastContainer position="bottom-left" />
         <Navbar theme={theme} setTheme={(theme) => setTheme(theme)} />
         <Component {...pageProps} />
         <Footer />

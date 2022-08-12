@@ -1,14 +1,22 @@
-import react from "react";
-import { getProviders, signIn } from "next-auth/react";
+import react, { useEffect } from "react";
 import { GetServerSideProps } from "next";
-import Image from "next/image";
+import { useRouter } from "next/router";
+import { getProviders, signIn } from "next-auth/react";
 import { inferAsyncReturnType } from "@trpc/server";
+import { toast } from "react-toastify";
+import { AuthErrors } from "utils/errors";
 
 interface IProps {
   providers: inferAsyncReturnType<typeof getProviders>;
 }
 
 const AuthPage: React.FC<IProps> = ({ providers }) => {
+  const { error } = useRouter().query;
+
+  useEffect(() => {
+    if (error) toast.error(AuthErrors[error as string]);
+  }, [error]);
+
   if (!providers) {
     return <div>No providers found</div>;
   }

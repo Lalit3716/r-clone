@@ -15,6 +15,7 @@ module.exports = {
         "inverse-soft": "var(--color-text-inverse-soft)",
         "primary-nav": "var(--color-text-primary-nav)",
         "inverse-nav": "var(--color-text-inverse-nav)",
+        disabled: "var(--disabled-text)",
       },
       backgroundColor: {
         primary: "var(--color-bg-primary)",
@@ -22,6 +23,7 @@ module.exports = {
         default: "var(--color-bg-default)",
         inverse: "var(--color-bg-inverse)",
         "primary-nav": "var(--bg-primary-nav)",
+        disabled: "var(--disabled-bg)",
       },
     },
   },
