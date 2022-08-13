@@ -24,9 +24,10 @@ module.exports = {
         inverse: "var(--color-bg-inverse)",
         "primary-nav": "var(--bg-primary-nav)",
         disabled: "var(--disabled-bg)",
+        tertiary: "var(--color-bg-tertiary)",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
   darkMode: "class",
 };

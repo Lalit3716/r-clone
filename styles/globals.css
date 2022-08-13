@@ -4,6 +4,8 @@
 
 .theme-dark {
   --color-bg-primary: #1e1e1e;
+  --color-bg-secondary: #131313;
+  --color-bg-tertiary: #3f3e3e;
   --color-text-primary: #fff;
   --color-text-secondary: #ccc;
   --bg-primary-nav: #362b2b;
@@ -15,7 +17,10 @@
 
 .theme-light {
   --color-bg-primary: #fff;
+  --color-bg-secondary: #eeecec;
+  --color-bg-tertiary: #ffffff;
   --color-text-primary: #1e1e1e;
+  --color-text-secondary: #8f8d8d;
   --bg-primary-nav: #ebebeb;
   --color-text-primary-nav: #000;
   --color-text-primary-nav: #000;
@@ -26,6 +31,7 @@
 
 .theme-neon {
   --color-bg-primary: #3e0f6f;
+  --color-bg-secondary: #2a0353;
   --color-text-primary: #e2e2dc;
   --color-text-secondary: #ccc;
   --bg-primary-nav: #fafafa;
@@ -37,6 +43,7 @@
 
 .theme-yellow {
   --color-bg-primary: #d0e62f;
+  --color-bg-secondary: #e4f640;
   --color-text-primary: #1b1b1b;
   --bg-primary-nav: #fafafa;
   --color-text-primary-nav: #000;
