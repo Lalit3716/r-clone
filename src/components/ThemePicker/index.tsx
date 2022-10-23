@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Themes } from "themes";
 
@@ -8,8 +8,18 @@ interface IProps {
   className?: string;
 }
 
+let rendered = 0;
+
 const ThemePicker: React.FC<IProps> = ({ theme, setTheme, className }) => {
   const [originalTheme, setOriginalTheme] = useState(theme);
+
+  useEffect(() => {
+    if (rendered === 1) {
+      setOriginalTheme(theme);
+    }
+
+    rendered++;
+  }, [theme]);
 
   return (
     <Menu as="menu">
