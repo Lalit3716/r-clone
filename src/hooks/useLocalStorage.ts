@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const useLocalStorage = <T>(
   key: string,
@@ -17,7 +17,7 @@ const useLocalStorage = <T>(
       try {
         setState(JSON.parse(storageValue));
       } catch (e) {
-        setState(storageValue as T);
+        setState(storageValue as unknown as T);
       }
     }
   }, [key, value]);
