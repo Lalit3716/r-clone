@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { AppProps } from "next/app";
 import { withTRPC } from "@trpc/next";
 import { SessionProvider } from "next-auth/react";

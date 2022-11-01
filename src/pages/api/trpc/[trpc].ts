@@ -1,6 +1,5 @@
 import * as trpcNext from "@trpc/server/adapters/next";
 import { appRouter } from "server/routers/app";
-import { z } from "zod";
 
 // export type definition of API
 export type AppRouter = typeof appRouter;

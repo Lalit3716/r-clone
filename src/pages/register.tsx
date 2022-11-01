@@ -1,5 +1,3 @@
-import React from "react";
-
 const RegisterForm: React.FC = () => {
   return (
     <div className="flex flex-col flex-1 p-10">
