@@ -16,6 +16,7 @@ module.exports = {
         "primary-nav": "var(--color-text-primary-nav)",
         "inverse-nav": "var(--color-text-inverse-nav)",
         disabled: "var(--disabled-text)",
+        footer: "var(--color-text-footer)",
       },
       backgroundColor: {
         primary: "var(--color-bg-primary)",
@@ -25,6 +26,7 @@ module.exports = {
         "primary-nav": "var(--bg-primary-nav)",
         disabled: "var(--disabled-bg)",
         tertiary: "var(--color-bg-tertiary)",
+        footer: "var(--color-bg-footer)",
       },
     },
   },

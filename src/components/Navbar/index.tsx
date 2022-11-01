@@ -3,8 +3,7 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import ThemePicker from "components/ThemePicker";
-import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
 interface IProps {
@@ -89,12 +88,21 @@ const Navbar: React.FC<IProps> = ({ theme, setTheme }) => {
                 setTheme={setTheme}
                 className="w-full mb-2"
               />
-              <a
-                href="#"
-                className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-              >
-                Log In
-              </a>
+              {!session?.user ? (
+                <a
+                  href="#"
+                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-inverse-nav bg-indigo-600 hover:bg-indigo-700"
+                >
+                  Log In
+                </a>
+              ) : (
+                <button
+                  onClick={() => signOut()}
+                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-inverse-nav bg-indigo-600 hover:bg-indigo-700"
+                >
+                  Log out
+                </button>
+              )}
             </div>
           </div>
         </Popover.Panel>
