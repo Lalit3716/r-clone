@@ -1,4 +1,7 @@
 import { createRouter } from "server/createRouter";
-import api from "./api";
+import { apiRouter } from "server/routers/api";
+import { postRouter } from "server/routers/post";
 
-export const appRouter = createRouter().merge("api.", api);
+export const appRouter = createRouter()
+  .merge("api.", apiRouter)
+  .merge("post.", postRouter);

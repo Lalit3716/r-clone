@@ -1,7 +1,7 @@
 import { createRouter } from "server/createRouter";
 import z from "zod";
 
-export default createRouter().query("hello", {
+export const apiRouter = createRouter().query("hello", {
   input: z
     .object({
       text: z.string().nullish(),

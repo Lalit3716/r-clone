@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { withTRPC } from "@trpc/next";
 import { SessionProvider } from "next-auth/react";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { ToastContainer } from "react-toastify";
 import { AppRouter } from "pages/api/trpc/[trpc]";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,7 +16,7 @@ const MyApp = ({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) => {
-  const [theme, setTheme] = useLocalStorage<string>("theme", Themes.Dark);
+  const [theme, setTheme] = useLocalStorage<string>("theme", Themes.Light);
 
   return (
     <SessionProvider session={session}>
@@ -24,6 +25,7 @@ const MyApp = ({
         <Navbar theme={theme} setTheme={(theme) => setTheme(theme)} />
         <Component {...pageProps} />
         <Footer />
+        {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
       </div>
     </SessionProvider>
   );
